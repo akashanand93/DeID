@@ -30,14 +30,17 @@ python -m venv [env_name]
 pip install -r requirements.txt
 ```
 4. Setup some paths into constants.py
-├── DeID
-│   ├── 
-│   ├── models
-│   ├── scripts
-│   ├── **utils**
-│   │   ├── **constants.py**
-│   │   ├── prompt.py
-
+```bash
+.
+├── ...
+├── models
+├── scripts
+├── **utils**
+│   ├── **constants.py**
+│   ├── prompt.py                           
+│   └── yamlrunner.py          
+└── ...
+```
 
 ```python
 # Path to the directory containing the clinical notes after parsing from xml file
