@@ -1,0 +1,15 @@
+serialize:
+
+  - etl: 'unannotated_clinical_notes_to_sentences'
+    factory: 'clinicalnotes_to_sentences'
+    inp-file: 'data/lake/datasets/clinicalnotes/320-01.ndjson'
+    out-file: 'data/lake/datasets/clinicalsentences/320-01.ndjson'
+    sentence-extractor: 'spacy_with_basic'
+
+  - etl: 'unannotated_clinical_notes_to_sentences'
+    factory: 'clinicalnotes_to_sentences'
+    inp-file: 'data/lake/datasets/clinicalnotes/320-02.ndjson'
+    out-file: 'data/lake/datasets/clinicalsentences/320-02.ndjson'
+    sentence-extractor: 'spacy'
+
+  

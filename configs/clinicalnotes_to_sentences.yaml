@@ -1,0 +1,48 @@
+serialize:
+  - etl: 'unannotated_clinical_notes_to_sentences'
+    factory: 'clinicalnotes_to_sentences'
+    inp-file: 'data/lake/datasets/clinicalnotes/deid_surrogate_test_all_version2.ndjson'
+    out-file: 'data/lake/datasets/clinicalsentences/deid_surrogate_test_all_version2.ndjson'
+    sentence-extractor: 'spacy_with_basic'
+
+  - etl: 'unannotated_clinical_notes_to_sentences'
+    factory: 'clinicalnotes_to_sentences'
+    inp-file: 'data/lake/datasets/clinicalnotes/smokers_surrogate_test_all_groundtruth_version2.ndjson'
+    out-file: 'data/lake/datasets/clinicalsentences/smokers_surrogate_test_all_groundtruth_version2.ndjson'
+    sentence-extractor: 'spacy_with_basic'
+
+  - etl: 'unannotated_clinical_notes_to_sentences'
+    factory: 'clinicalnotes_to_sentences'
+    inp-file: 'data/lake/datasets/clinicalnotes/smokers_surrogate_test_all_version2.ndjson'
+    out-file: 'data/lake/datasets/clinicalsentences/smokers_surrogate_test_all_version2.ndjson'
+    sentence-extractor: 'spacy_with_basic'
+
+  - etl: 'unannotated_clinical_notes_to_sentences'
+    factory: 'clinicalnotes_to_sentences'
+    inp-file: 'data/lake/datasets/clinicalnotes/smokers_surrogate_train_all_version2.ndjson'
+    out-file: 'data/lake/datasets/clinicalsentences/smokers_surrogate_train_all_version2.ndjson'
+    sentence-extractor: 'spacy_with_basic'
+
+  - etl: 'unannotated_clinical_notes_to_sentences'
+    factory: 'clinicalnotes_to_sentences'
+    inp-file: 'data/lake/datasets/clinicalnotes/unannotated_records_deid_smoking.ndjson'
+    out-file: 'data/lake/datasets/clinicalsentences/unannotated_records_deid_smoking.ndjson'
+    sentence-extractor: 'spacy_with_basic'
+
+  - etl: 'annotated_clinical_notes_to_sentences'
+    factory: 'clinicalnotes_to_sentences'
+    inp-file: 'data/lake/datasets/clinicalnotes/deid_surrogate_test_all_groundtruth_version2.ndjson'
+    out-file: 'data/lake/datasets/clinicalsentences/deid_surrogate_test_all_groundtruth_version2.ndjson'
+    sentence-extractor: 'spacy_with_basic'
+
+  - etl: 'annotated_clinical_notes_to_sentences'
+    factory: 'clinicalnotes_to_sentences'
+    inp-file: 'data/lake/datasets/clinicalnotes/deid_surrogate_train_all_version2.ndjson'
+    out-file: 'data/lake/datasets/clinicalsentences/deid_surrogate_train_all_version2.ndjson'
+    sentence-extractor: 'spacy_with_basic'
+
+  - etl: 'annotated_clinical_notes_to_sentences'
+    factory: 'clinicalnotes_to_sentences'
+    inp-file: 'data/lake/datasets/clinicalnotes/2014_I2B2_annotated_data.ndjson'
+    out-file: 'data/lake/datasets/clinicalsentences/2014_I2B2_annotated_data.ndjson'
+    sentence-extractor: 'spacy_with_basic'

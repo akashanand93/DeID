@@ -1,0 +1,5 @@
+serialize:
+  - etl: 'compare_sentence_annotations_to_doccano_annotations'
+    factory: "annotations_to_doccano_annotations"
+    inp-file: 'data/lake/datasets/taggedsentences(machine_readable)/deid_surrogate_test_all_groundtruth_version2_gpt_4o.ndjson'
+    out-file: 'data/lake/datasets/taggedsentences(human_readable)/deid_surrogate_test_all_groundtruth_version2_gpt_4o.ndjson'

@@ -1,0 +1,56 @@
+serialize:
+  - etl: 'unannotated_sentences_tagging_2006i2b2'
+    factory: 'sentences_to_annotations'
+    inp-file: 'data/lake/datasets/clinicalsentences/deid_surrogate_test_all_version2.ndjson'
+    out-file: 'data/lake/datasets/taggedsentences(machine_readable)/deid_surrogate_test_all_version2.ndjson'
+    sentence-tagging: 'gpt'
+    model: "gpt-4o"
+
+  - etl: 'unannotated_sentences_tagging_2006i2b2'
+    factory: 'sentences_to_annotations'
+    inp-file: 'data/lake/datasets/clinicalsentences/smokers_surrogate_test_all_groundtruth_version2.ndjson'
+    out-file: 'data/lake/datasets/taggedsentences(machine_readable)/smokers_surrogate_test_all_groundtruth_version2.ndjson'
+    sentence-tagging: 'gpt'
+    model: "gpt-4o"
+
+  - etl: 'unannotated_sentences_tagging_2006i2b2'
+    factory: 'sentences_to_annotations'
+    inp-file: 'data/lake/datasets/clinicalsentences/smokers_surrogate_test_all_version2.ndjson'
+    out-file: 'data/lake/datasets/taggedsentences(machine_readable)/smokers_surrogate_test_all_version2.ndjson'
+    sentence-tagging: 'gpt'
+    model: "gpt-4o"
+
+  - etl: 'unannotated_sentences_tagging_2006i2b2'
+    factory: 'sentences_to_annotations'
+    inp-file: 'data/lake/datasets/clinicalsentences/smokers_surrogate_train_all_version2.ndjson'
+    out-file: 'data/lake/datasets/taggedsentences(machine_readable)/smokers_surrogate_train_all_version2.ndjson'
+    sentence-tagging: 'gpt'
+    model: "gpt-4o"
+
+  - etl: 'unannotated_sentences_tagging_2006i2b2'
+    factory: 'sentences_to_annotations'
+    inp-file: 'data/lake/datasets/clinicalsentences/unannotated_records_deid_smoking.ndjson'
+    out-file: 'data/lake/datasets/taggedsentences(machine_readable)/unannotated_records_deid_smoking.ndjson'
+    sentence-tagging: 'gpt'
+    model: "gpt-4o"
+
+  - etl: 'annotated_sentences_tagging_2006i2b2'
+    factory: 'sentences_to_annotations'
+    inp-file: 'data/lake/datasets/clinicalsentences/deid_surrogate_test_all_groundtruth_version2.ndjson'
+    out-file: 'data/lake/datasets/taggedsentences(machine_readable)/deid_surrogate_test_all_groundtruth_version2.ndjson'
+    sentence-tagging: 'gpt'
+    model: "gpt-4o"
+
+  - etl: 'annotated_sentences_tagging_2006i2b2'
+    factory: 'sentences_to_annotations'
+    inp-file: 'data/lake/datasets/clinicalsentences/deid_surrogate_train_all_version2.ndjson'
+    out-file: 'data/lake/datasets/taggedsentences(machine_readable)/deid_surrogate_train_all_version2.ndjson'
+    sentence-tagging: 'gpt'
+    model: "gpt-4o"
+
+  - etl: 'annotated_sentences_tagging_2014i2b2'
+    factory: 'sentences_to_annotations'
+    inp-file: 'data/lake/datasets/clinicalsentences/2014_I2B2_annotated_data copy.ndjson'
+    out-file: 'data/lake/datasets/taggedsentences(machine_readable)/2014_I2B2_annotated_data.ndjson'
+    sentence-tagging: 'gpt'
+    model: "gpt-4o"
