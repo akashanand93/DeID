@@ -9,6 +9,9 @@ Our primary approach is to utilize API access and manual testing to evaluate Cha
 5. Visulization of GPT annotation and ground truth annotation on doccano server.
 
     ![image](https://github.com/caresage/DeID/assets/91689859/66bee7d0-ef7f-47e9-852b-b5f94d994a62)
+    <p align="center">
+    <b>Figure 1:</b> Workflow architecture of our methodology.
+    </p>
 
 ## Setup
 1. Clone the repository
