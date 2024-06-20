@@ -86,7 +86,7 @@ DeID
 - There will be two types of clinical notes present in xml files of I2B2 dataset: 
     - Only clinical notes (Present in only 2006 DeID SmokingStatus)
     - Clinical notes with ground truth annotations (Present in both 2006 DeID SmokingStatus and 2014 DeID heart disease) 
-- There are also different ETls for each of the above types for a perticular dataset. 
+- There are also different ETLs for each of the above types for a perticular dataset. 
 - Update dataset_to_clinicalnotes.yaml file with your raw dataset paths.
 ```bash  
 DeID  
@@ -146,7 +146,7 @@ After runnig above command you will have extracted clinical notes presented in *
 
 ### 2. Sentences Extraction from parsed clinical notes
 - There are too many algorithms to perform sentence tokenization from clinical notes. We have implemented 3 different algorithmns to extract sentence. You can also implement your own sentence tokenization algorithm and put it into algos/sentence_extractor and chnage the code in ETLs that pointing the specific algorithm. Don't forget to map your algorithms in basicfactory.py and classmaps.py
-- There are also different ETls for extracting sentences from:
+- There are also different ETLs for extracting sentences from:
     - Clinical notes - with ground annotation present
     - Only clinical notes
 - Update clinicalnotes_to_sentences.yaml file with your clinical notes dataset paths.
@@ -217,10 +217,10 @@ After runnig above command you will have extracted sentences from clinical notes
 - There are too many algorithms to perform sentence tagging. We have implemented algorithmns to tag sentence based on GPT models. You can also implement your own sentence tagging algorithm and put it into algos/sentence_tagging and chnage the code in ETLs that pointing the specific algorithm. Don't forget to map your algorithms in basicfactory.py and classmaps.py
 - Here We are using "gpt-4o" model. You can use other models like "gpt-4", "gpt-3.5-turbo", "gpt-3" etc. Don't forget to map your models in basicfactory.py and classmaps.py
 - Since we are using GPT based algorithm to tag sentence, there will be also a requirement of prompt. Prompts are present in utils/prompt.py. You can modified prompt according to your dataset and process. But Don't forget to import it in neccesary places.
-- There are also different ETls for tagging sentences from:
+- There are also different ETLs for tagging sentences from:
     - Sentences - with ground annotation present
     - Only Sentences
-- There are also different ETls for each of the above types for a perticular dataset. 
+- There are also different ETLs for each of the above types for a perticular dataset. 
 - Since we are extracting structured information from clinical sentences, you can change your model(structure) in models/model.py for different datasets.
 - Update sentences_to_annotations.yaml file with your sentences dataset paths.
 ```bash
