@@ -1,6 +1,5 @@
 # DeID
 ## LLM based DeID algorithm
-
 This is a simple implementation of a DeID algorithm using a Language Model (LLM) to identify Protected Health Information (PHI) in clinical text. The algorithm uses a pre-trained LLM (in this case, GPT-4) to identify PHI entities. 
 The algorithm consists of the following steps:
 1. Parsing clinical notes from xml files
