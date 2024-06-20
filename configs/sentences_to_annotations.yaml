@@ -1,56 +1,23 @@
-serialize:
+# for tagging sentences from any 2006 DeID SmokingStatus only clinical sentences
   - etl: 'unannotated_sentences_tagging_2006i2b2'
     factory: 'sentences_to_annotations'
-    inp-file: 'data/lake/datasets/clinicalsentences/deid_surrogate_test_all_version2.ndjson'
-    out-file: 'data/lake/datasets/taggedsentences(machine_readable)/deid_surrogate_test_all_version2.ndjson'
-    sentence-tagging: 'gpt'
-    model: "gpt-4o"
+    inp-file: 'copy_PROCESSED_SENTENCES_DIR_name_from_constant.py/2006_unannotated_sentences.ndjson'
+    out-file: 'copy_TAGGED_SENTECNES_MACHINE_DIR_name_from_constant.py/2006_unannotated_sentences.ndjson'
+    sentence-tagging: 'gpt'  # you can replace it with your(any) algoritm
+    model: "gpt-4o"   # you can replace it with any model_name
 
-  - etl: 'unannotated_sentences_tagging_2006i2b2'
-    factory: 'sentences_to_annotations'
-    inp-file: 'data/lake/datasets/clinicalsentences/smokers_surrogate_test_all_groundtruth_version2.ndjson'
-    out-file: 'data/lake/datasets/taggedsentences(machine_readable)/smokers_surrogate_test_all_groundtruth_version2.ndjson'
-    sentence-tagging: 'gpt'
-    model: "gpt-4o"
-
-  - etl: 'unannotated_sentences_tagging_2006i2b2'
-    factory: 'sentences_to_annotations'
-    inp-file: 'data/lake/datasets/clinicalsentences/smokers_surrogate_test_all_version2.ndjson'
-    out-file: 'data/lake/datasets/taggedsentences(machine_readable)/smokers_surrogate_test_all_version2.ndjson'
-    sentence-tagging: 'gpt'
-    model: "gpt-4o"
-
-  - etl: 'unannotated_sentences_tagging_2006i2b2'
-    factory: 'sentences_to_annotations'
-    inp-file: 'data/lake/datasets/clinicalsentences/smokers_surrogate_train_all_version2.ndjson'
-    out-file: 'data/lake/datasets/taggedsentences(machine_readable)/smokers_surrogate_train_all_version2.ndjson'
-    sentence-tagging: 'gpt'
-    model: "gpt-4o"
-
-  - etl: 'unannotated_sentences_tagging_2006i2b2'
-    factory: 'sentences_to_annotations'
-    inp-file: 'data/lake/datasets/clinicalsentences/unannotated_records_deid_smoking.ndjson'
-    out-file: 'data/lake/datasets/taggedsentences(machine_readable)/unannotated_records_deid_smoking.ndjson'
-    sentence-tagging: 'gpt'
-    model: "gpt-4o"
-
+# for tagging sentences from any 2006 DeID SmokingStatus clinical sentences with ground annotation
   - etl: 'annotated_sentences_tagging_2006i2b2'
     factory: 'sentences_to_annotations'
-    inp-file: 'data/lake/datasets/clinicalsentences/deid_surrogate_test_all_groundtruth_version2.ndjson'
-    out-file: 'data/lake/datasets/taggedsentences(machine_readable)/deid_surrogate_test_all_groundtruth_version2.ndjson'
-    sentence-tagging: 'gpt'
-    model: "gpt-4o"
+    inp-file: 'copy_PROCESSED_SENTENCES_DIR_name_from_constant.py/2006_annotated_sentences.ndjson'
+    out-file: 'copy_TAGGED_SENTECNES_MACHINE_DIR_name_from_constant.py/2006_annotated_sentences.ndjson'
+    sentence-tagging: 'gpt'  # you can replace it with your(any) algoritm
+    model: "gpt-4o"  # you can replace it with any model_name
 
-  - etl: 'annotated_sentences_tagging_2006i2b2'
-    factory: 'sentences_to_annotations'
-    inp-file: 'data/lake/datasets/clinicalsentences/deid_surrogate_train_all_version2.ndjson'
-    out-file: 'data/lake/datasets/taggedsentences(machine_readable)/deid_surrogate_train_all_version2.ndjson'
-    sentence-tagging: 'gpt'
-    model: "gpt-4o"
-
+# for tagging sentences from any 2014 DeID heart disease clinical sentences with ground annotation
   - etl: 'annotated_sentences_tagging_2014i2b2'
     factory: 'sentences_to_annotations'
-    inp-file: 'data/lake/datasets/clinicalsentences/2014_I2B2_annotated_data copy.ndjson'
-    out-file: 'data/lake/datasets/taggedsentences(machine_readable)/2014_I2B2_annotated_data.ndjson'
-    sentence-tagging: 'gpt'
-    model: "gpt-4o"
+    inp-file: 'copy_PROCESSED_SENTENCES_DIR_name_from_constant.py/2014.ndjson'
+    out-file: 'copy_TAGGED_SENTECNES_MACHINE_DIR_name_from_constant.py/2014.ndjson'
+    sentence-tagging: 'gpt'  # you can replace it with your(any) algoritm
+    model: "gpt-4o"  # you can replace it with any model_name

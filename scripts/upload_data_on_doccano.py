@@ -16,7 +16,7 @@ def main(args):
 
     load_dotenv(dotenv_path="_secrets/.env")
 
-    doccano_url = "https://doccano.prod.caresage.ai"
+    doccano_url = os.getenv("DOCCANO_URL")
     username = os.getenv("DOCCANO_USER_NAME")
     password = os.getenv("DOCCANO_PASSWORD")
 

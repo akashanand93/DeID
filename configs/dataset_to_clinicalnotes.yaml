@@ -1,42 +1,19 @@
 serialize:
+
+# for extracting clinical notes from 2006_annotated.xml
   - etl: 'annotated_raw_clinical_notes_i2b2_2006'
     factory: 'dataset_to_clinicalnotes'
-    inp-file: 'data/lake/datasets/I2B2/2006_DeID_SmokingStatus/deid_surrogate_test_all_groundtruth_version2.xml'
-    out-file: 'data/lake/datasets/clinicalnotes/deid_surrogate_test_all_groundtruth_version2.ndjson'
+    inp-file: 'data/SampleI2B2Data/2006_annotated.xml'
+    out-file: 'copy_DEID_PROCESSED_DIR_name_from_constant.py/2006_annotated.ndjson'
 
-  - etl: 'annotated_raw_clinical_notes_i2b2_2006'
-    factory: 'dataset_to_clinicalnotes'
-    inp-file: 'data/lake/datasets/I2B2/2006_DeID_SmokingStatus/deid_surrogate_train_all_version2.xml'
-    out-file: 'data/lake/datasets/clinicalnotes/deid_surrogate_train_all_version2.ndjson'
-
+# for extracting clinical notes from 2006_unannotated.xml
   - etl: 'unannotated_raw_clinical_notes_i2b2_2006'
     factory: 'dataset_to_clinicalnotes'
-    inp-file: 'data/lake/datasets/I2B2/2006_DeID_SmokingStatus/deid_surrogate_test_all_version2.xml'
-    out-file: 'data/lake/datasets/clinicalnotes/deid_surrogate_test_all_version2.ndjson'
+    inp-file: 'data/SampleI2B2Data/2006_unannotated.xml'
+    out-file: 'copy_DEID_PROCESSED_DIR_name_from_constant.py/2006_unannotated.ndjson'
 
-  - etl: 'unannotated_raw_clinical_notes_i2b2_2006'
-    factory: 'dataset_to_clinicalnotes'
-    inp-file: 'data/lake/datasets/I2B2/2006_DeID_SmokingStatus/smokers_surrogate_test_all_groundtruth_version2.xml'
-    out-file: 'data/lake/datasets/clinicalnotes/smokers_surrogate_test_all_groundtruth_version2.ndjson'
-
-  - etl: 'unannotated_raw_clinical_notes_i2b2_2006'
-    factory: 'dataset_to_clinicalnotes'
-    inp-file: 'data/lake/datasets/I2B2/2006_DeID_SmokingStatus/smokers_surrogate_test_all_version2.xml'
-    out-file: 'data/lake/datasets/clinicalnotes/smokers_surrogate_test_all_version2.ndjson'
-
-  - etl: 'unannotated_raw_clinical_notes_i2b2_2006'
-    factory: 'dataset_to_clinicalnotes'
-    inp-file: 'data/lake/datasets/I2B2/2006_DeID_SmokingStatus/smokers_surrogate_train_all_version2.xml'
-    out-file: 'data/lake/datasets/clinicalnotes/smokers_surrogate_train_all_version2.ndjson'
-
-  - etl: 'unannotated_raw_clinical_notes_i2b2_2006'
-    factory: 'dataset_to_clinicalnotes'
-    inp-file: 'data/lake/datasets/I2B2/2006_DeID_SmokingStatus/unannotated_records_deid_smoking.xml'
-    out-file: 'data/lake/datasets/clinicalnotes/unannotated_records_deid_smoking.ndjson'
-
+# for extracting clinical notes from 2014.xml
   - etl: 'annotated_clinical_notes_i2b2_2014'
     factory: 'dataset_to_clinicalnotes'
-    inp-file: 'data/lake/datasets/I2B2/2014_data'
-    out-file: 'data/lake/datasets/clinicalnotes'
-
-
+    inp-file: 'data/SampleI2B2Data/2014.xml'
+    out-file: 'copy_DEID_PROCESSED_DIR_name_from_constant.py/2014.ndjson'

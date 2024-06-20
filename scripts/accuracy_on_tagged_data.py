@@ -32,7 +32,11 @@ class Accuracy:
         untagged_dict = {}
         extra_tagged_dict = {}
         mis_matched_tags = []
-        categories = ["B-NAME", "B-LOCATION", "B-AGE", "B-ID", "B-DATE", "B-CONTACT", "B-PROFESSION", "I-NAME", "I-LOCATION", "I-AGE", "I-ID", "I-DATE", "I-CONTACT", "I-PROFESSION"]
+        raw_categories = ["NAME", "LOCATION", "AGE", "ID", "DATE", "CONTACT", "PROFESSION"]
+        categories = []
+        for category in raw_categories:
+            categories.append("B_" + category)
+            categories.append("I_" + category)
         for category in categories:
             key_ = category[2:]
             correctly_tagged_dict[key_] = 0
@@ -98,7 +102,7 @@ class Accuracy:
         }
         print(metrics)
         
-        categories = ["NAME", "LOCATION", "AGE", "ID", "DATE", "CONTACT", "PROFESSION"]
+        categories = raw_categories
         fig = plt.figure(figsize=(8,6))
         ax = fig.add_axes([0,0,1,1])
         bottom = np.zeros(len(categories))

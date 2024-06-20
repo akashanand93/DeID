@@ -1,5 +1,18 @@
 serialize:
+
+# for visulizing data on doccano with only LLM based annotations
+  - etl: 'annotated_sentences_to_doccano_annotations'
+    factory: "annotations_to_doccano_annotations"
+    inp-file: 'copy_TAGGED_SENTECNES_MACHINE_DIR_name_from_constant.py/2006_unannotated.ndjson'
+    out-file: 'copy_TAGGED_SENTECNES_DOCCANO_DIR_name_from_constant.py/2006_unannotated.ndjson'
+
+# for visulizing data on doccano with LLM based annotations and ground truth annotations
   - etl: 'compare_sentence_annotations_to_doccano_annotations'
     factory: "annotations_to_doccano_annotations"
-    inp-file: 'data/lake/datasets/taggedsentences(machine_readable)/deid_surrogate_test_all_groundtruth_version2_gpt_4o.ndjson'
-    out-file: 'data/lake/datasets/taggedsentences(human_readable)/deid_surrogate_test_all_groundtruth_version2_gpt_4o.ndjson'
+    inp-file: 'copy_TAGGED_SENTECNES_MACHINE_DIR_name_from_constant.py/2006_annotated.ndjson'
+    out-file: 'copy_TAGGED_SENTECNES_DOCCANO_DIR_name_from_constant.py/2006_annotated.ndjson'
+
+  - etl: 'compare_sentence_annotations_to_doccano_annotations'
+    factory: "annotations_to_doccano_annotations"
+    inp-file: 'copy_TAGGED_SENTECNES_MACHINE_DIR_name_from_constant.py/2014.ndjson'
+    out-file: 'copy_TAGGED_SENTECNES_DOCCANO_DIR_name_from_constant.py/2014.ndjson'

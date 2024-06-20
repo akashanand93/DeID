@@ -1,7 +1,6 @@
 import asyncio
 import sys
 import json
-import glob
 from etl.utils.dfutils import LakeDB
 from utils.constants import DataConstants
 from models.model import AnnotatedClinicalNote, SingleAnnotation
@@ -30,24 +29,16 @@ class I2B22014ToClinicalNotes(DSETL[AnnotatedClinicalNote, AnnotatedClinicalNote
         # Initialize with default options and create necessary directories
         super().__init__(cli_tokens, options, self.DEFAULT_OPTIONS)
         self.inp_file_path = self.options["inp-file"]
-        self.file_names = []
+        self.file_name = self.inp_file_path.split("/")[-1].split(".")[0]
         self.out_dir = self.options["out-dir"]
         self.out_db = LakeDB(self.out_dir)
         os.makedirs(self.out_dir, exist_ok=True)
 
     async def extract(self) -> List[AnnotatedClinicalNote]:
         # step1: Read xml file from inp_db
-        file_pattern = "*.xml"
-        files = glob.glob(os.path.join(self.inp_file_path, file_pattern))
-        cn = []
-        id = 1
-        for file in tqdm.tqdm(files):
-            base_name = os.path.basename(file).replace(".xml", "")
-            self.file_names.append(base_name)
-            cn.append(self._read_xml_file_and_return_clinicalnotes(file))
-            cn[-1].note_id = str(id)
-            id += 1
-        logger.success(f"Reading Done...  from folder {self.inp_file_path}")
+        cn = self._read_xml_file_and_return_clinicalnotes(self.inp_file_path)
+        logger.success(f"Reading Done... from file {self.inp_file_path}")
+        return cn
 
         # step2: for all clinical notes make a List[ClinicalNote]
         return cn
@@ -61,7 +52,7 @@ class I2B22014ToClinicalNotes(DSETL[AnnotatedClinicalNote, AnnotatedClinicalNote
     async def load(self, data: List[AnnotatedClinicalNote]):
         # dump in outfile.ndjson format
         file_saved = self._write_clinical_notes(
-            data, file_name="2014_I2B2_annotated_data"
+            data, file_name=self.file_name
         )
         logger.success(f"Loaded {len(data)} to file {file_saved}")
         return
