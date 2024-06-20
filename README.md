@@ -1,11 +1,12 @@
 # DeID
 ## LLM based DeID algorithm
 This is a simple implementation of a DeID algorithm using a Language Model (LLM) to identify Protected Health Information (PHI) in clinical text. The algorithm uses a pre-trained LLM (in this case, GPT-4) to identify PHI entities. 
-The algorithm consists of the following steps:
-1. Parsing clinical notes from xml files
-2. Extract sentences from clinical notes
-3. Annotate each extracted sentences using LLMs
-4. Visulize annotation on doccano server
+Our primary approach is to utilize API access and manual testing to evaluate ChatGPT (powered by GPT-3.5) and GPT-4’s (through OpenAI’s web interface that is shared with ChatGPT) performance on anonymizing clinical notes. We will describe our entire workflow in detail, from the data preprocessing to evaluation. Below figure represents the complete workfow architecture of our methodology. This workflow consist of,
+1. Extraction of clinical notes from raw xml files from 2006 I2B2 datasets.
+2. Sentences Extraction from parsed clinical notes.
+3. Using GPT, annotate the extracted sentences.
+4. Evaluation of the GPT annotation with respect to ground truth annotations.
+5. Visulization of GPT annotation and ground truth annotation on doccano to understand missmatches in annotations.
 
 ## Setup
 1. Clone the repository
