@@ -337,7 +337,43 @@ After runnig above command you will have mismatched tags with their sentences pr
     - Sentences with only LLM based annotations
     - Sentences with LLM based annotations and ground truth annotations present
 
-- Update annotations_to_doccano.yaml file with your tagged sentences dataset paths.
+- Update annotations_to_doccano.yaml file with your tagged sentences dataset paths- Then you can run the following command:
+        ```bash
+        python scripts/upload_data_on_doccano.py -i "path/to/visulized/data/of/type/ndjson" -p "project_name" -d "project_description"
+        ```
+    - If you don't have deployed link of your doccano then you can also ipload data on doccano. For that you don't need to run above python command. You can manually import dataset on doccano. You can go through below tutorial:
+        - Here is the  github link to setup a doccano on your local machine :  [doccano-setup](https://github.com/doccano/doccano/)
+        - Here i- Then you can run the following command:
+        ```bash
+        python scripts/upload_data_on_doccano.py -i "path/to/visulized/data/of/type/ndjson" -p "project_name" -d "project_description"
+        ```
+    - If you don't have deployed link of your doccano then you can also ipload data on doccano. For that you don't need to run above python command. You can manually import dataset on doccano. You can go through below tutorial:
+        - Here is the  github link to setup a doccano on your local machine :  [doccano-setup](https://github.com/doccano/doccano/)
+        - Here i- Then you can run the following command:
+        ```bash
+        python scripts/upload_data_on_doccano.py -i "path/to/visulized/data/of/type/ndjson" -p "project_name" -d "project_description"
+        ```
+    - If you don't have deployed link of your doccano then you can also ipload data on doccano. For that you don't need to run above python command. You can manually import dataset on doccano. You can go through below tutorial:
+        - Here is the  github link to setup a doccano on your local machine :  [doccano-setup](https://github.com/doccano/doccano/)
+        - Here i- Then you can run the following command:
+        ```bash
+        python scripts/upload_data_on_doccano.py -i "path/to/visulized/data/of/type/ndjson" -p "project_name" -d "project_description"
+        ```
+    - If you don't have deployed link of your doccano then you can also ipload data on doccano. For that you don't need to run above python command. You can manually import dataset on doccano. You can go through below tutorial:
+        - Here is the  github link to setup a doccano on your local machine :  [doccano-setup](https://github.com/doccano/doccano/)
+        - Here i- Then you can run the following command:
+        ```bash
+        python scripts/upload_data_on_doccano.py -i "path/to/visulized/data/of/type/ndjson" -p "project_name" -d "project_description"
+        ```
+    - If you don't have deployed link of your doccano then you can also ipload data on doccano. For that you don't need to run above python command. You can manually import dataset on doccano. You can go through below tutorial:
+        - Here is the  github link to setup a doccano on your local machine :  [doccano-setup](https://github.com/doccano/doccano/)
+        - Here i- Then you can run the following command:
+        ```bash
+        python scripts/upload_data_on_doccano.py -i "path/to/visulized/data/of/type/ndjson" -p "project_name" -d "project_description"
+        ```
+    - If you don't have deployed link of your doccano then you can also ipload data on doccano. For that you don't need to run above python command. You can manually import dataset on doccano. You can go through below tutorial:
+        - Here is the  github link to setup a doccano on your local machine :  [doccano-setup](https://github.com/doccano/doccano/)
+        - Here i.
 ```bash
 DeID
 ├── ...
@@ -392,15 +428,18 @@ After runnig above command you will have visulized data on doccano presented in 
 
 - Upload data on doccano:
     - You can upload data on doccano using doccano API. For that first you have to put your DOCCANO_URL, DOCCANO_USER_NAME and DOCCANO_PASSWORD into _secrets.env file. 
-        > [!WARNING]
-        > Urgent info that needs immediate user attention to avoid problems.
-    - Then you can run the following command:
+> [!WARNING]
+> Don't paste your local host doccano url in DOCCANO_URL, insted put deployed doccano url.
+  
+    - Then you can run the following command:  
+    
         ```bash
         python scripts/upload_data_on_doccano.py -i "path/to/visulized/data/of/type/ndjson" -p "project_name" -d "project_description"
-        ```
-    - If you don't have deployed link of your doccano then you can also ipload data on doccano. For that you don't need to run above python command. You can manually import dataset on doccano. You can go through below tutorial:
-        - Here is the  github link to setup a doccano on your local machine :  [doccano-setup](https://github.com/doccano/doccano/)
-        - Here is the tutorial for visulizing data on doccano : [doccano-tutorial](https://doccano.github.io/doccano/tutorial/)
+        ```  
+> [!NOTE]
+> If you don't have deployed link of your doccano then you can also ipload data on doccano. For that you don't need to run above python command. You can manually import dataset on doccano. You can go through below tutorial:
+> Here is the  github link to setup a doccano on your local machine :  [doccano-setup](https://github.com/doccano/doccano/)
+> Here is the tutorial for visulizing data on doccano : [doccano-tutorial](https://doccano.github.io/doccano/tutorial/)
 
 Now open doccano and visulize the sentence annotation and mismatches also! After then you can reformate the prompt, model, algorithm etc. according to mismatches/errors.
 
