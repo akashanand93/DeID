@@ -78,9 +78,11 @@ DeID
 └── ...  
 ```
 
- Here we have provided ETLS that are based on I2B2 datasets: **2006 DeID SmokingStatus** and **2014 DeID heart disease**   
+ Here we have provided ETLS that are based on I2B2 datasets: 2006 DeID SmokingStatus and 2014 DeID heart disease   
 
-*To run complete workflow, follow the below stepwise instructions:*
+> [!IMPORTANT]  
+> *To run complete workflow, follow the below stepwise instructions:*
+
 
 ### 1. Extraction of clinical notes from raw xml files
 - There will be two types of clinical notes present in xml files of I2B2 dataset: 
@@ -141,8 +143,8 @@ Run the ETL using the following command:
 python utils/yamlrunner.py --config_file configs/dataset_to_clinicalnotes.yaml
 ```
 
-After runnig above command you will have extracted clinical notes presented in **DEID_PROCESSED_DIR** as ndjson formate.  
-(Basically extracted clinical notes will present in **out-file** paths from *dataset_to_clinicalnotes.yaml*)
+After runnig above command you will have extracted clinical notes presented in DEID_PROCESSED_DIR as ndjson formate.  
+(Basically extracted clinical notes will present in out-file paths from *dataset_to_clinicalnotes.yaml*)
 
 ### 2. Sentences Extraction from parsed clinical notes
 - There are too many algorithms to perform sentence tokenization from clinical notes. We have implemented 3 different algorithmns to extract sentence. You can also implement your own sentence tokenization algorithm and put it into algos/sentence_extractor and chnage the code in ETLs that pointing the specific algorithm. Don't forget to map your algorithms in basicfactory.py and classmaps.py
@@ -209,8 +211,8 @@ Run the ETL using the following command:
 python utils/yamlrunner.py --config_file configs/clinicalnotes_to_sentences.yaml
 ```
 
-After runnig above command you will have extracted sentences from clinical notes presented in **PROCESSED_SENTENCES_DIR** as ndjson formate.  
-(Basically extracted sentences will present in **out-file** paths from *clinicalnotes_to_sentences.yaml*)
+After runnig above command you will have extracted sentences from clinical notes presented in PROCESSED_SENTENCES_DIR as ndjson formate.  
+(Basically extracted sentences will present in out-file paths from *clinicalnotes_to_sentences.yaml*)
 
 
 ### 3. Using GPT, annotate the extracted sentences
@@ -291,8 +293,8 @@ Then run the following command:
 python utils/yamlrunner.py --config_file configs/sentences_to_annotations.yaml
 ```
 
-After runnig above command you will have tagged sentences presented in **TAGGED_SENTECNES_MACHINE_DIR** as ndjson formate.  
-(Basically tagged sentences will present in **out-file** paths from *sentences_to_annotations.yaml*)
+After runnig above command you will have tagged sentences presented in TAGGED_SENTECNES_MACHINE_DIR as ndjson formate.  
+(Basically tagged sentences will present in out-file paths from *sentences_to_annotations.yaml*)
 
 ### 4. Evaluation of the GPT annotation with respect to ground truth annotations
 - Evaluation script will be different for 2006 DeID SmokingStatus and 2014 DeID heart disease, because there are different PHI categories present in both dataset. So you just have to replace raw_categories array according to unique PHIs present in your dataset in the file scripts/accuracy_on_tagged_data.py.
@@ -326,7 +328,7 @@ You will have to pass input file path for which you want to find accuracy. It wi
 python scripts/accuracy_on_tagged_data.py -i "path/to/tagged/sentences/file/of/type/ndjson"
 ```
 
-After runnig above command you will have mismatched tags with their sentences presented in **METRICS_DIR** as ndjson formate. This ndjson formate will be directly doccano visulization formate.
+After runnig above command you will have mismatched tags with their sentences presented in METRICS_DIR as ndjson formate. This ndjson formate will be directly doccano visulization formate. You will also see the bar plot of each categories.
 
 ### 5. Visulization of GPT annotation and ground truth annotation on doccano server
 - You can visulize two types of data on doccano:
@@ -388,8 +390,8 @@ Run the ETL using the following command:
 python utils/yamlrunner.py --config_file configs/annotations_to_doccano.yaml
 ```
 
-After runnig above command you will have visulized data on doccano presented in **TAGGED_SENTECNES_DOCCANO_DIR** as ndjson formate. 
-(Basically visulized data will present in **out-file** paths from *annotations_to_doccano.yaml*)
+After runnig above command you will have visulized data on doccano presented in TAGGED_SENTECNES_DOCCANO_DIR as ndjson formate. 
+(Basically visulized data will present in out-file paths from *annotations_to_doccano.yaml*)
 
 You can upload data on doccano using doccano API. For that first you have to put your DOCCANO_URL, DOCCANO_USER_NAME and DOCCANO_PASSWORD into _secrets.env file. 
 > [!WARNING]  
@@ -404,5 +406,6 @@ python scripts/upload_data_on_doccano.py -i "path/to/visulized/data/of/type/ndjs
 > Here is the  github link to setup a doccano on your local machine :  [doccano-setup](https://github.com/doccano/doccano/)  
 > Here is the tutorial for visulizing data on doccano : [doccano-tutorial](https://doccano.github.io/doccano/tutorial/)
 
-Now open doccano and visulize the sentence annotation and mismatches also! After then you can reformate the prompt, model, algorithm etc. according to mismatches/errors.
+> [!TIP]  
+> Now open doccano and visulize the sentence annotation and mismatches also! After then you can refine the prompt, model, algorithm etc. according to mismatches/errors to increase accuracy.
 
