@@ -8,10 +8,12 @@ Our primary approach is to utilize API access and manual testing to evaluate Cha
 4. Evaluation of the GPT annotation with respect to ground truth annotations.
 5. Visulization of GPT annotation and ground truth annotation on doccano server.
 
+
     ![image](https://github.com/caresage/DeID/assets/91689859/66bee7d0-ef7f-47e9-852b-b5f94d994a62)
     <p align="center">
-    <b>Figure 1:</b> Workflow architecture of our methodology.
+    <i>Figure 1: Workflow architecture of our methodology.</i>
     </p>
+
 
 ## Setup
 1. Clone the repository
@@ -27,20 +29,34 @@ python -m venv [env_name]
 ```bash
 pip install -r requirements.txt
 ```
-4. Setup some paths into utils/constants.py
+4. Setup some paths into constants.py
+├── DeID
+│   ├── 
+│   ├── models
+│   ├── scripts
+│   ├── **utils**
+│   │   ├── **constants.py**
+│   │   ├── prompt.py
+
+
 ```python
 # Path to the directory containing the clinical notes after parsing from xml file
 DEID_PROCESSED_DIR = ""
+
 # Path to the directory containing the extracted sentences from the clinical notes
 PROCESSED_SENTENCES_DIR = ""
+
 # Path to the directory containing the tagged sentences in machine readable (CoNLL)formate 
 # For example: B-NAME, I-NAME, B-ORG....
 TAGGED_SENTECNES_MACHINE_DIR = ""
+
 # Path to the directory containing the tagged sentences in human readable formate
 # For example: NAME, ORG, DATE....
 TAGGED_SENTECNES_HUMAN_DIR = ""
+
 # Path to the directory containing the tagged sentences to be uploaded in doccano server
 TAGGED_SENTECNES_DOCCANO_DIR = ""
-# Path to the directory containing the metrics of the model like accuracy, plots, confusion matrix etc.
+
+# Path to the directory containing the metrics of the model like accuracy, plots etc.
 METRICS_DIR = ""
 ```

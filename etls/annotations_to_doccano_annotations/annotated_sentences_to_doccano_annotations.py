@@ -7,7 +7,7 @@ from models.model import (
     Annotations,
     AnnotatedSentence,
 )
-from datascience.etls.DSETL import DSETL
+from etls.DSETL import DSETL
 from typing import List
 from common.utils.log import ConfigureLogging
 from pydantic.json import pydantic_encoder
