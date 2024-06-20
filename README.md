@@ -402,7 +402,7 @@ Then you can run the following command:
 python scripts/upload_data_on_doccano.py -i "path/to/visulized/data/of/type/ndjson" -p "project_name" -d "project_description"
 ```  
 > [!NOTE]  
-> If you don't have deployed link of your doccano then you can also ipload data on doccano. For that you don't need to run above python command. You can manually import dataset on doccano. You can go through below tutorial:  
+> If you don't have deployed link of your doccano then you can also upload data on doccano. For that you don't need to run above python command. You can manually import dataset on doccano. You can go through below tutorial:  
 > Here is the  github link to setup a doccano on your local machine :  [doccano-setup](https://github.com/doccano/doccano/)  
 > Here is the tutorial for visulizing data on doccano : [doccano-tutorial](https://doccano.github.io/doccano/tutorial/)
 
