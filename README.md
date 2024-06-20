@@ -392,8 +392,8 @@ After runnig above command you will have visulized data on doccano presented in 
 
 - Upload data on doccano:
     - You can upload data on doccano using doccano API. For that first you have to put your DOCCANO_URL, DOCCANO_USER_NAME and DOCCANO_PASSWORD into _secrets.env file. 
-        > [!WARNING]  
-        > Don't paste your local host doccano url in DOCCANO_URL, insted put deployed doccano url.
+        > [!WARNING]
+        > Urgent info that needs immediate user attention to avoid problems.
     - Then you can run the following command:
         ```bash
         python scripts/upload_data_on_doccano.py -i "path/to/visulized/data/of/type/ndjson" -p "project_name" -d "project_description"
