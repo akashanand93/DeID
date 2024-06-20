@@ -7,7 +7,8 @@ Our primary approach is to utilize API access and manual testing to evaluate Cha
 3. Using GPT, annotate the extracted sentences.
 4. Evaluation of the GPT annotation with respect to ground truth annotations.
 5. Visulization of GPT annotation and ground truth annotation on doccano server.
-   ![image](https://github.com/caresage/DeID/assets/91689859/66bee7d0-ef7f-47e9-852b-b5f94d994a62)
+
+    ![image](https://github.com/caresage/DeID/assets/91689859/66bee7d0-ef7f-47e9-852b-b5f94d994a62)
 
 ## Setup
 1. Clone the repository
