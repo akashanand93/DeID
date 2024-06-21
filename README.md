@@ -26,11 +26,15 @@ git clone https://github.com/caresage/DeID.git
 ```bash
 python -m venv [env_name]
 ```
-3. Install the required packages using the following command:
+4. Activate it using the following command:
+```bash
+source ./[env_name]/bin/activate
+```
+4. Install the required packages using the following command:
 ```bash
 pip install -r requirements.txt
 ```
-4. Setup some paths into constants.py   
+5. Setup some paths into constants.py   
 ```bash  
 DeID  
 ├── ...  
