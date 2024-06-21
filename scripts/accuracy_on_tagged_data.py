@@ -7,6 +7,7 @@ import numpy as np
 
 
 
+
 class Accuracy:
     def __init__(self, file_path, trues=[], preds=[]):
         self.inp_file = file_path
@@ -35,8 +36,8 @@ class Accuracy:
         raw_categories = ["NAME", "LOCATION", "AGE", "ID", "DATE", "CONTACT", "PROFESSION"]
         categories = []
         for category in raw_categories:
-            categories.append("B_" + category)
-            categories.append("I_" + category)
+            categories.append("B-" + category)
+            categories.append("I-" + category)
         for category in categories:
             key_ = category[2:]
             correctly_tagged_dict[key_] = 0
@@ -104,6 +105,7 @@ class Accuracy:
         
         categories = raw_categories
         fig = plt.figure(figsize=(8,6))
+        fig = plt.figure(facecolor=(1, 1, 1))
         ax = fig.add_axes([0,0,1,1])
         bottom = np.zeros(len(categories))
         p = ax.bar(categories, [correctly_tagged_dict[category] for category in categories], color='g', width=0.6, label="Correctly Tagged", bottom=bottom)
@@ -118,8 +120,7 @@ class Accuracy:
         p = ax.bar(categories, [extra_tagged_dict[category] for category in categories], color='y', width=0.6, label="Extra Tagged", bottom=bottom)
         ax.bar_label(p, label_type="center")
         ax.legend()
-        plt.show()        
-        
+        fig.savefig(f"{self.out_dir}/{self.file_name}-BarPlot.jpg", bbox_inches='tight')
         with open(f"{self.out_dir}/{self.file_name}-mismatches.json", "w") as f:
             for tag in mis_matched_tags:
                 f.write(json.dumps(tag) + "\n")

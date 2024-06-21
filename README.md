@@ -18,7 +18,6 @@ Our primary approach is to utilize API access and manual testing to evaluate Cha
 
 ## Setup
 1. Clone the repository
-<!-- cloning code -->
 ```bash
 git clone https://github.com/caresage/DeID.git
 ```
@@ -190,20 +189,20 @@ you can set up as many as ETLs that you want to run for extracting sentences fro
 serialize:
 
 # for extracting sentences from any clinical notes - with ground annotation datasets
-- etl: 'annotated_clinicalnotes_to_sentences'
+  - etl: 'annotated_clinical_notes_to_sentences'
     factory: 'clinicalnotes_to_sentences'
     inp-file: 'copy_DEID_PROCESSED_DIR_name_from_constant.py/2006_annotated.ndjson'
     out-file: 'copy_PROCESSED_SENTENCES_DIR_name_from_constant.py/2006_annotated.ndjson'
     sentence-extractor: 'spacy_with_basic'  # you can replace it with your(any) algoritm
 
-- etl: 'annotated_clinicalnotes_to_sentences'
+  - etl: 'annotated_clinical_notes_to_sentences'
     factory: 'clinicalnotes_to_sentences'
     inp-file: 'copy_DEID_PROCESSED_DIR_name_from_constant.py/2014.ndjson'
     out-file: 'copy_PROCESSED_SENTENCES_DIR_name_from_constant.py/2014.ndjson'
     sentence-extractor: 'spacy_with_basic'  # you can replace it with your(any) algoritm
 
 # for extracting sentences from any clinical notes - only clinical notes datasets
-- etl: 'unannotated_clinicalnotes_to_sentences'
+  - etl: 'unannotated_clinical_notes_to_sentences'
     factory: 'clinicalnotes_to_sentences'
     inp-file: 'copy_DEID_PROCESSED_DIR_name_from_constant.py/2006_unannotated.ndjson'
     out-file: 'copy_PROCESSED_SENTENCES_DIR_name_from_constant.py/2006_unannotated.ndjson' 

@@ -40,9 +40,6 @@ class I2B22014ToClinicalNotes(DSETL[AnnotatedClinicalNote, AnnotatedClinicalNote
         logger.success(f"Reading Done... from file {self.inp_file_path}")
         return cn
 
-        # step2: for all clinical notes make a List[ClinicalNote]
-        return cn
-
     async def transform(
         self, data: List[AnnotatedClinicalNote]
     ) -> List[AnnotatedClinicalNote]:
@@ -72,6 +69,7 @@ class I2B22014ToClinicalNotes(DSETL[AnnotatedClinicalNote, AnnotatedClinicalNote
         self, file_path: str
     ) -> AnnotatedClinicalNote:
         # Parse XML file and convert to a list of clinical notes
+        notes = []
         tree = ET.parse(file_path)
         root = tree.getroot()
         note = root.find("TEXT").text.strip()
@@ -93,15 +91,18 @@ class I2B22014ToClinicalNotes(DSETL[AnnotatedClinicalNote, AnnotatedClinicalNote
                             type=child.tag,
                         )
                     )     
-        return AnnotatedClinicalNote(
-            text=note,
-            note_type=str(type(note)),
-            date="",
-            patient_id="",
-            note_id="",
-            metadata={},
-            annotations=annotations,
+        notes.append(
+                AnnotatedClinicalNote(
+                text=note,
+                note_type=str(type(note)),
+                date="",
+                patient_id="",
+                note_id="",
+                metadata={},
+                annotations=annotations,
+            )
         )
+        return notes
 
 
 if __name__ == "__main__":

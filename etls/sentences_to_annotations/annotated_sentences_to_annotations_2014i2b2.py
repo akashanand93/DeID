@@ -72,16 +72,15 @@ class AnnotatedSnetencesTagging2014i2b2(DSETL[AnnotatedSentence, CompareSentence
         self,
         sentences: List[CompareSentenceAnnotations],
         file_name: str,
-        model_name: str,
         _type="ndjson",
     ) -> None:
         # Write tagged sentences to ndjson file
         if _type != "ndjson":
             raise ValueError("Only 'ndjson' type is supported")
-        with open(f"{self.out_db.db}/{file_name}_{model_name}.{_type}", "w") as f:
+        with open(f"{self.out_db.db}/{file_name}.{_type}", "w") as f:
             for sentence in tqdm.tqdm(sentences):
                 f.write(json.dumps(sentence, default=pydantic_encoder) + "\n")
-        return f"{self.out_db.db}/{file_name}_{model_name}.{_type}"
+        return f"{self.out_db.db}/{file_name}.{_type}"
 
     def _transform_sentences_to_tagged_sentences(
         self, sentences: List[AnnotatedSentence]
@@ -118,9 +117,9 @@ class AnnotatedSnetencesTagging2014i2b2(DSETL[AnnotatedSentence, CompareSentence
                 )
             )
             file_saved = self._write_tagged_sentences(
-                annotated_snetences, self.file_name, model_name
+                annotated_snetences, self.file_name
             )
-            logger.success(f"Loaded {len(annotated_snetences)} to file {file_saved}")
+            # logger.success(f"Loaded {len(annotated_snetences)} to file {file_saved}")
 
         return annotated_snetences
 

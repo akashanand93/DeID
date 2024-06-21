@@ -1,13 +1,13 @@
 import asyncio
 import sys
 import json
-from etl.utils.dfutils import DFUtils, LakeDB
+from etl.utils.dfutils import LakeDB
 from utils.constants import DataConstants
 from models.model import Sentence, Annotations, AnnotatedSentence, UserInfo2006i2b2
+from utils.prompt import i2b2_2006_prompt
 from etls.DSETL import DSETL
-from typing import Dict, List, Tuple
+from typing import List
 from common.utils.log import ConfigureLogging
-import xml.etree.ElementTree as ET
 from pydantic.json import pydantic_encoder
 from loguru import logger
 import os
@@ -76,7 +76,7 @@ class UnannotatedSnetencesTagging2006i2b2(DSETL[Sentence, AnnotatedSentence]):
         annotated_snetences = []
         for sentence in tqdm.tqdm(sentences):
             # Tagging sentence with model and converting annotations
-            userinfo = self.sentence_tgging.tagging_sentence(sentence.text)
+            userinfo = self.sentence_tgging.tagging_sentence(sentence.text, i2b2_2006_prompt, UserInfo2006i2b2)
             annotations = get_human_readable_annotations_2006i2b2(
                 sentence=sentence.text, response_obj=userinfo
             )
@@ -101,7 +101,7 @@ class UnannotatedSnetencesTagging2006i2b2(DSETL[Sentence, AnnotatedSentence]):
             file_saved = self._write_tagged_sentences(
                 annotated_snetences, self.file_name
             )
-            logger.success(f"Loaded {len(annotated_snetences)} to file {file_saved}")
+            # logger.success(f"Loaded {len(annotated_snetences)} to file {file_saved}")
         return annotated_snetences
 
     def _read_ndjson_file_and_return_sentences(self, file_path: str) -> List[Sentence]:
