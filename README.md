@@ -26,7 +26,7 @@ git clone https://github.com/caresage/DeID.git
 ```bash
 python -m venv [env_name]
 ```
-4. Activate it using the following command:
+3. Activate it using the following command:
 ```bash
 source ./[env_name]/bin/activate
 ```
