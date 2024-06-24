@@ -7,8 +7,9 @@ Our primary approach is to utilize API access and manual testing to evaluate Cha
 3. Using GPT, annotate the extracted sentences.
 4. Evaluation of the GPT annotation with respect to ground truth annotations.
 5. Visulization of GPT annotation and ground truth annotation on doccano server.
+
     <p align="center">
-    <img src="https://github.com/caresage/DeID/assets/91689859/66bee7d0-ef7f-47e9-852b-b5f94d994a62" alt="Workflow architecture of DeID methodology">
+    <img src="https://github.com/caresage/DeID/assets/91689859/00bde1c4-9233-4ddb-a2e2-96a264cfb01c" alt="Workflow architecture of DeID methodology">
     </p>
     <p align="center">
     <i>Figure 1: Workflow architecture of DeID methodology.</i>
