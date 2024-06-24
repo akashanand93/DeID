@@ -10,11 +10,12 @@ import os
 
 
 class Accuracy:
-    def __init__(self, file_path, root_dir, trues=[], preds=[]):
+    def __init__(self, file_path, root_dir, dataset, trues=[], preds=[]):
         self.inp_file = file_path
         self.file_name = self.inp_file.split("/")[-1].split(".")[0]
         self.out_dir = DataConstants.METRICS_DIR.format(root_dir=root_dir)
         os.makedirs(self.out_dir, exist_ok=True)
+        self.dataset = dataset
         self.trues = trues
         self.preds = preds
 
@@ -35,7 +36,12 @@ class Accuracy:
         untagged_dict = {}
         extra_tagged_dict = {}
         mis_matched_tags = []
-        raw_categories = ["NAME", "LOCATION", "AGE", "ID", "DATE", "CONTACT", "PROFESSION"]
+        if self.dataset == "2006":
+            raw_categories = ['NAME', 'AGE', 'DATE', 'ID', 'LOCATION', 'HOSPITAL', 'DOCTOR', 'PHONE']
+        elif self.dataset == "2014":
+            raw_categories = ["NAME", "LOCATION", "AGE", "ID", "DATE", "CONTACT", "PROFESSION"]
+        else:
+            raw_categories = []
         categories = []
         for category in raw_categories:
             categories.append("B-" + category)
@@ -129,7 +135,7 @@ class Accuracy:
 
 
 def main(args):
-    accuracy = Accuracy(args.input_file, args.root_dir)
+    accuracy = Accuracy(args.input_file, args.root_dir, args.dataset)
     accuracy.calculate_accuracy()
 
 
@@ -140,6 +146,9 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "-r", "--root_dir", type=str, help="Root directory to store metrics"
+    )
+    parser.add_argument(
+        "-d", "--dataset", type=str, help="Root directory to store metrics"
     )
     args = parser.parse_args()
     main(args)
