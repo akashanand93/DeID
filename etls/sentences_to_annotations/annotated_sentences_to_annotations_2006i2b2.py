@@ -25,14 +25,20 @@ import tqdm
 class AnnotatedSnetencesTagging2006i2b2(DSETL[AnnotatedSentence, CompareSentenceAnnotations]):
     
     # Default options for the output directory
-    DEFAULT_OPTIONS = {"out-dir": DataConstants.TAGGED_SENTECNES_MACHINE_DIR}
+    DEFAULT_OPTIONS = {
+        "out-dir": DataConstants.TAGGED_SENTENCES_MACHINE_DIR,
+        "inp-dir": DataConstants.PROCESSED_SENTENCES_DIR
+    }
 
     def __init__(self, cli_tokens=None, options=None):
         # Initialize with default options and create necessary directories
         super().__init__(cli_tokens, options, self.DEFAULT_OPTIONS)
-        self.inp_file_path = self.options["inp-file"]
-        self.file_name = self.inp_file_path.split("/")[-1].split(".")[0]
-        self.out_dir = self.options["out-dir"]
+        self.root = self.options["root"]
+        self.inp_dir = self.options["inp-dir"].format(root_dir=self.root)      
+        self.inp_file_name = self.options["inp-file"]
+        self.inp_file_path = self.inp_dir + "/" + self.inp_file_name
+        self.out_dir = self.options["out-dir"].format(root_dir=self.root)
+        self.out_file_name = self.options["out-file"].split(".")[0]
         self.out_db = LakeDB(self.out_dir)
         os.makedirs(self.out_dir, exist_ok=True)
         self.sentence_tgging = None
@@ -55,7 +61,7 @@ class AnnotatedSnetencesTagging2006i2b2(DSETL[AnnotatedSentence, CompareSentence
 
     async def load(self, data: List[CompareSentenceAnnotations]):
         # Step 3: Dump tagged sentences in ndjson format
-        file_saved = self._write_tagged_sentences(data, self.file_name)
+        file_saved = self._write_tagged_sentences(data, self.out_file_name)
         logger.success(f"Loaded {len(data)} to file {file_saved}")
         return
 
@@ -91,7 +97,7 @@ class AnnotatedSnetencesTagging2006i2b2(DSETL[AnnotatedSentence, CompareSentence
                     secondary_annotations=Annotations(annotation_source="GPT", annotations=annotations),
                 )
             )
-            file_saved = self._write_tagged_sentences(annotated_snetences, self.file_name)
+            file_saved = self._write_tagged_sentences(annotated_snetences, self.out_file_name)
             # logger.success(f"Loaded {len(annotated_snetences)} to file {file_saved}")
         return annotated_snetences
 

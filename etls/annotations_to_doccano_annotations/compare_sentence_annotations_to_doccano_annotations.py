@@ -26,8 +26,9 @@ class CompareSentenceAnnotationsToDoccano(
 ):
     # Default output directories for human-readable and Doccano formats
     DEFAULT_OPTIONS = {
-        "out-dir-human": DataConstants.TAGGED_SENTECNES_HUMAN_DIR,
-        "out-dir-doccano": DataConstants.TAGGED_SENTECNES_DOCCANO_DIR,
+        "out-dir-human": DataConstants.TAGGED_SENTENCES_HUMAN_DIR,
+        "out-dir-doccano": DataConstants.TAGGED_SENTENCES_DOCCANO_DIR,
+        "inp-dir": DataConstants.TAGGED_SENTENCES_MACHINE_DIR,
     }
 
     def __init__(
@@ -37,10 +38,13 @@ class CompareSentenceAnnotationsToDoccano(
     ):
         # Initialize with default options and create necessary directories
         super().__init__(cli_tokens, options, self.DEFAULT_OPTIONS)
-        self.inp_file_path = self.options["inp-file"]
-        self.file_name = self.inp_file_path.split("/")[-1].split(".")[0]
-        self.out_dir_human = self.options["out-dir-human"]
-        self.out_dir_doccano = self.options["out-dir-doccano"]
+        self.root = self.options["root"]
+        self.inp_dir = self.options["inp-dir"].format(root_dir=self.root)      
+        self.inp_file_name = self.options["inp-file"]
+        self.inp_file_path = self.inp_dir + "/" + self.inp_file_name
+        self.out_dir_human = self.options["out-dir-human"].format(root_dir=self.root)
+        self.out_dir_doccano = self.options["out-dir-doccano"].format(root_dir=self.root)
+        self.out_file_name = self.options["out-file"].split(".")[0]
         self.out_db = LakeDB(self.out_dir_human)
         os.makedirs(self.out_dir_human, exist_ok=True)
         os.makedirs(self.out_dir_doccano, exist_ok=True)
@@ -61,7 +65,7 @@ class CompareSentenceAnnotationsToDoccano(
 
     async def load(self, data: List[CompareSentenceAnnotations]):
         # dump in outfile.ndjson format
-        file_saved = self._write_tagged_sentences(data, self.file_name)
+        file_saved = self._write_tagged_sentences(data, self.out_file_name)
         logger.success(f"Loaded {len(data)} to file {file_saved}")
         return
 
@@ -133,7 +137,7 @@ class CompareSentenceAnnotationsToDoccano(
         write_doccano_tagged_sentences(
             sentences1=doccano_manual_annotated_sentences,
             file_path=self.out_dir_doccano,
-            file_name=self.file_name,
+            file_name=self.out_file_name,
             _type="ndjson",
             sentences2=doccano_gpt_annotated_sentences,
         )

@@ -19,6 +19,8 @@ class I2B22014ToClinicalNotes(DSETL[AnnotatedClinicalNote, AnnotatedClinicalNote
     # Default options for the output directory
     DEFAULT_OPTIONS = {
         "out-dir": DataConstants.DEID_PROCESSED_DIR,
+        "inp-dir": DataConstants.I2B2_DATA_DIR,
+        
     }
 
     def __init__(
@@ -28,9 +30,12 @@ class I2B22014ToClinicalNotes(DSETL[AnnotatedClinicalNote, AnnotatedClinicalNote
     ):
         # Initialize with default options and create necessary directories
         super().__init__(cli_tokens, options, self.DEFAULT_OPTIONS)
-        self.inp_file_path = self.options["inp-file"]
-        self.file_name = self.inp_file_path.split("/")[-1].split(".")[0]
-        self.out_dir = self.options["out-dir"]
+        self.root = self.options["root"]
+        self.inp_dir = self.options["inp-dir"].format(root_dir=self.root)      
+        self.inp_file_name = self.options["inp-file"]
+        self.inp_file_path = self.inp_dir + "/" + self.inp_file_name
+        self.out_dir = self.options["out-dir"].format(root_dir=self.root)
+        self.out_file_name = self.options["out-file"].split(".")[0]
         self.out_db = LakeDB(self.out_dir)
         os.makedirs(self.out_dir, exist_ok=True)
 
@@ -49,7 +54,7 @@ class I2B22014ToClinicalNotes(DSETL[AnnotatedClinicalNote, AnnotatedClinicalNote
     async def load(self, data: List[AnnotatedClinicalNote]):
         # dump in outfile.ndjson format
         file_saved = self._write_clinical_notes(
-            data, file_name=self.file_name
+            data, file_name=self.out_file_name
         )
         logger.success(f"Loaded {len(data)} to file {file_saved}")
         return

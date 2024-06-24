@@ -1,18 +1,24 @@
 serialize:
 
+# inp-files (tagged sentences) are present in {root}/taggedsentences(machine_readable)
+# out-files (doccano annotations) will be stored in {root}/taggedsentences(doccano_readable)
+
 # for visulizing data on doccano with only LLM based annotations
   - etl: 'annotated_sentences_to_doccano_annotations'
+    root: 'data'
     factory: "annotations_to_doccano_annotations"
-    inp-file: 'copy_TAGGED_SENTECNES_MACHINE_DIR_name_from_constant.py/2006_unannotated.ndjson'
-    out-file: 'copy_TAGGED_SENTECNES_DOCCANO_DIR_name_from_constant.py/2006_unannotated.ndjson'
+    inp-file: '2006_unannotated_taggedsentences.ndjson'
+    out-file: '2006_unannotated_taggedsentences.ndjson'
 
 # for visulizing data on doccano with LLM based annotations and ground truth annotations
   - etl: 'compare_sentence_annotations_to_doccano_annotations'
+    root: 'data'
     factory: "annotations_to_doccano_annotations"
-    inp-file: 'copy_TAGGED_SENTECNES_MACHINE_DIR_name_from_constant.py/2006_annotated.ndjson'
-    out-file: 'copy_TAGGED_SENTECNES_DOCCANO_DIR_name_from_constant.py/2006_annotated.ndjson'
+    inp-file: '2006_annotated_taggedsentences.ndjson'
+    out-file: '2006_annotated_taggedsentences.ndjson'
 
   - etl: 'compare_sentence_annotations_to_doccano_annotations'
+    root: 'data'
     factory: "annotations_to_doccano_annotations"
-    inp-file: 'copy_TAGGED_SENTECNES_MACHINE_DIR_name_from_constant.py/2014.ndjson'
-    out-file: 'copy_TAGGED_SENTECNES_DOCCANO_DIR_name_from_constant.py/2014.ndjson'
+    inp-file: '2014_taggedsentences.ndjson'
+    out-file: '2014_taggedsentences.ndjson'

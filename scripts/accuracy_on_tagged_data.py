@@ -4,15 +4,17 @@ import json
 import argparse
 import tqdm
 import numpy as np
+import os
 
 
 
 
 class Accuracy:
-    def __init__(self, file_path, trues=[], preds=[]):
+    def __init__(self, file_path, root_dir, trues=[], preds=[]):
         self.inp_file = file_path
         self.file_name = self.inp_file.split("/")[-1].split(".")[0]
-        self.out_dir = DataConstants.METRICS_DIR
+        self.out_dir = DataConstants.METRICS_DIR.format(root_dir=root_dir)
+        os.makedirs(self.out_dir, exist_ok=True)
         self.trues = trues
         self.preds = preds
 
@@ -127,7 +129,7 @@ class Accuracy:
 
 
 def main(args):
-    accuracy = Accuracy(args.input_file)
+    accuracy = Accuracy(args.input_file, args.root_dir)
     accuracy.calculate_accuracy()
 
 
@@ -135,6 +137,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate a accuracy report.")
     parser.add_argument(
         "-i", "--input_file", type=str, help="Path to the input data file"
+    )
+    parser.add_argument(
+        "-r", "--root_dir", type=str, help="Root directory to store metrics"
     )
     args = parser.parse_args()
     main(args)
